@@ -4,6 +4,7 @@ import { ListePatientsComponent } from './liste-patients/liste-patients.componen
 
 const routes: Routes = [
   {path:"liste-patients",component:ListePatientsComponent}
+
 ];
 
 @NgModule({

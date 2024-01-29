@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
+import { DashboardCounterComponent } from './dashboard-counter/dashboard-counter.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ListePatientsComponent } from './liste-patients/liste-patients.componen
     UsersComponent,
     NavBarComponent,
     SidebarComponent,
-    ListePatientsComponent
+    ListePatientsComponent,
+    DashboardCounterComponent
   ],
   imports: [
     BrowserModule,
