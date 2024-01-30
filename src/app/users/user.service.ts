@@ -30,7 +30,8 @@ export class UserService {
     return this.http.put<User>(`${this.apiUrl}/users/${user.utilisateurId}`, user);
   }
 
-  deleteUser(id: number): Observable<any> {
+
+  deleteUser(id: number): Observable<string> {
     return this.http.delete(`${this.apiUrl}/users/${id}`, { responseType: 'text' });
   }
 }

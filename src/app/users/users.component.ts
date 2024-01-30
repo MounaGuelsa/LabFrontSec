@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from "@angular/common/http";
 import { User } from "./user";
 import { UserService } from "./user.service";
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -13,29 +12,26 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   showForm: boolean = false;
   showUpdateForm: boolean = false;
-  userForm: FormGroup | undefined;
-  updateUserForm: FormGroup | undefined;
-  selectedUserId: number | undefined;
+  userForm: FormGroup = this.formBuilder.group({
+    nomUtilisateur: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    roleDutilisateur: ['', Validators.required],
+    InformationsPersonalises: ['', Validators.required]
+  });
+  updateUserForm: FormGroup = this.formBuilder.group({
+    nomUtilisateur: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    roleDutilisateur: ['', Validators.required],
+    InformationsPersonalises: ['', Validators.required]
+  });
+  selectedUser: User | undefined;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.getUsers();
-    this.userForm = this.formBuilder.group({
-      nomUtilisateur: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      roleDutilisateur: ['', Validators.required],
-      InformationsPersonalises: ['', Validators.required]
-    });
-
-    this.updateUserForm = this.formBuilder.group({
-      nomUtilisateur: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      roleDutilisateur: ['', Validators.required],
-      InformationsPersonalises: ['', Validators.required]
-    });
   }
 
   public getUsers() {
@@ -49,24 +45,23 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  public toggleForm() {
+  public toggleForm(user?: User): void {
     this.showForm = !this.showForm;
-    this.showUpdateForm = false;
-  }
-
-  public toggleUpdateForm(userId: number) {
-    this.selectedUserId = userId;
     this.showUpdateForm = true;
 
-    // Fetch the user details by ID and populate the update form
-    this.userService.getUser(userId).subscribe(
-      (user: User) => {
-        this.updateUserForm?.setValue(user);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+    if (user) {
+      this.selectedUser = user;
+      this.updateUserForm?.setValue({
+        nomUtilisateur: user.nomUtilisateur,
+        email: user.email,
+        password: '', // You can choose not to update the password here
+        roleDutilisateur: user.roleDutilisateur,
+        InformationsPersonalises: user.InformationsPersonalises,
+      });
+    } else {
+      this.selectedUser = undefined;
+      this.updateUserForm?.reset();
+    }
   }
 
   public addUser(): void {
@@ -83,14 +78,17 @@ export class UsersComponent implements OnInit {
   }
 
   public updateUser(): void {
-    if (this.selectedUserId) {
-      const updatedUser: User = { utilisateurId: this.selectedUserId, ...this.updateUserForm?.value };
+    if (this.selectedUser) {
+      const updatedUser: User = {
+        ...this.selectedUser,
+        ...this.updateUserForm?.value,
+      };
 
       this.userService.updateUser(updatedUser).subscribe(
         (response: User) => {
           console.log(response);
           this.getUsers();
-          this.showUpdateForm = false;
+          this.toggleForm(); // Close the form after updating
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
@@ -99,9 +97,10 @@ export class UsersComponent implements OnInit {
     }
   }
 
+
   public deleteUser(userId: number): void {
     this.userService.deleteUser(userId).subscribe(
-      (response: void) => {
+      (response: string) => {
         console.log(response);
         this.getUsers();
       },

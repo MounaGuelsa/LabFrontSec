@@ -10,8 +10,8 @@
       </button>
     </div>
 
-    <form *ngIf="showForm && userForm" [formGroup]="userForm" (ngSubmit)="addUser()">
-      <div class="form-group">
+    <div *ngIf="showForm || showUpdateForm">
+      <form *ngIf="showForm && !selectedUser" [formGroup]="userForm" (ngSubmit)="addUser()">      <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" class="form-control" formControlName="nomUtilisateur">
       </div>
@@ -39,35 +39,36 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <form *ngIf="showUpdateForm && updateUserForm" [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
-      <!-- Update User Form -->
-      <div class="form-group">
-        <label for="updateUsername">Username</label>
-        <input type="text" id="updateUsername" class="form-control" formControlName="nomUtilisateur">
-      </div>
+      <!-- In your HTML -->
+      <form *ngIf="showUpdateForm && selectedUser" [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="form-control" formControlName="nomUtilisateur">
+        </div>
 
-      <div class="form-group">
-        <label for="updateEmail">Email</label>
-        <input type="email" id="updateEmail" class="form-control" formControlName="email">
-      </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" formControlName="email">
+        </div>
 
-      <div class="form-group">
-        <label for="updatePassword">Password</label>
-        <input type="password" id="updatePassword" class="form-control" formControlName="password">
-      </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" formControlName="password">
+        </div>
 
-      <div class="form-group">
-        <label for="updateRole">Role</label>
-        <input type="text" id="updateRole" class="form-control" formControlName="roleDutilisateur">
-      </div>
+        <div class="form-group">
+          <label for="role">Role</label>
+          <input type="text" id="role" class="form-control" formControlName="roleDutilisateur">
+        </div>
 
-      <div class="form-group">
-        <label for="updateInfo">Informations</label>
-        <input type="text" id="updateInfo" class="form-control" formControlName="InformationsPersonalises">
-      </div>
+        <div class="form-group">
+          <label for="info">Informations</label>
+          <input type="text" id="info" class="form-control" formControlName="InformationsPersonalises">
+        </div>
 
-      <button type="submit" class="btn btn-primary">Update</button>
-    </form>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
 
 
     <table *ngIf="!showForm" id="datatablesSimple" class="table table-bordered">
@@ -89,13 +90,15 @@
         <td>{{user.email}}</td>
         <td>{{user.roleDutilisateur}}</td>
         <td>{{user.InformationsPersonalises}}</td>
+        <!-- Inside the *ngFor loop where you display users -->
         <td>
-          <button class="btn btn-sm btn-info" (click)="updateUser(user)">
+          <button class="btn btn-sm btn-info" (click)="toggleForm(user)">
             <i class="fas fa-pencil-alt"></i>
           </button>
         </td>
+
         <td>
-          <button class="btn btn-sm btn-danger">
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user.utilisateurId)">
             <i class="fas fa-trash"></i>
           </button>
         </td>
