@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ListePatientsComponent } from './liste-patients/liste-patients.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
