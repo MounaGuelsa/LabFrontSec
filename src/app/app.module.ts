@@ -8,6 +8,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReagentsComponent } from './reagents/reagents.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     UsersComponent,
     NavBarComponent,
     SidebarComponent,
-    ListePatientsComponent
+    ListePatientsComponent,
+    ReagentsComponent
   ],
   imports: [
     BrowserModule,
