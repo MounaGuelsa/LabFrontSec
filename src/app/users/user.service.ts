@@ -18,6 +18,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
+
   addUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
   }
@@ -31,10 +32,10 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<string> {
-   
+
     const isConfirmed = window.confirm('Are you sure you want to delete this user?');
 
- 
+
     if (isConfirmed) {
         return this.http.delete(`${this.apiUrl}/users/${id}`, { responseType: 'text' });
     } else {
