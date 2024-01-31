@@ -13,8 +13,9 @@ export class ReagentsComponent implements OnInit {
   constructor(private reagentService: ReagentService) {}
 
   ngOnInit(): void {
-    this.reagentService.getPatients().subscribe(data => {
+    this.reagentService.getReagents().subscribe(data => {
       this.reactifs = data;
     });
   }
+
 }

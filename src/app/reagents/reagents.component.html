@@ -12,6 +12,8 @@
           <th>Quantite</th>
           <th>Date de Expiration</th>
           <th>Fournisseur</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +23,16 @@
           <td>{{ reactif.quantite }}</td>
           <td>{{ reactif.dateDeExpiration }}</td>
           <td>{{ reactif.fournisseur }}</td>
+          <td>
+            <button type="button" class="btn btn-warning">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </td>
+          <td>
+            <!-- <button class="btn btn-sm btn-danger" (click)="deleteReagent(reactif.reactifId)"> -->
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
         </tr>
 
       </tbody>
