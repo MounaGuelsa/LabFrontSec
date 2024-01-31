@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from "@angular/common/http";
 import { User } from "./user";
 import { UserService } from "./user.service";
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -47,20 +48,21 @@ export class UsersComponent implements OnInit {
 
   public toggleForm(user?: User): void {
     this.showForm = !this.showForm;
-    this.showUpdateForm = true;
 
     if (user) {
+      this.showUpdateForm = true;
       this.selectedUser = user;
-      this.updateUserForm?.setValue({
+      this.updateUserForm.patchValue({
         nomUtilisateur: user.nomUtilisateur,
         email: user.email,
-        password: '', // You can choose not to update the password here
+        password: '',
         roleDutilisateur: user.roleDutilisateur,
         InformationsPersonalises: user.InformationsPersonalises,
       });
     } else {
+      this.showUpdateForm = false;
       this.selectedUser = undefined;
-      this.updateUserForm?.reset();
+      this.updateUserForm.reset();
     }
   }
 
@@ -96,7 +98,6 @@ export class UsersComponent implements OnInit {
       );
     }
   }
-
 
   public deleteUser(userId: number): void {
     this.userService.deleteUser(userId).subscribe(
