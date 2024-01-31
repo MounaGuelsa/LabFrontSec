@@ -9,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReagentsComponent } from './reagents/reagents.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReagentsComponent } from './reagents/reagents.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
