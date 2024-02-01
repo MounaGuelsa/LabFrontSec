@@ -1,0 +1,122 @@
+<!-- reagents.component.html -->
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-table me-1"></i>
+    List of Reagents
+  </div>
+  <div class="card-body">
+    <div class="mb-3">
+      <button class="btn btn-primary" (click)="toggleForm()">
+        <i class="fas fa-flask"></i> Add Reagent
+      </button>
+    </div>
+
+    <div *ngIf="showForm || showUpdateForm">
+      <form *ngIf="showForm && !selectedReagent" [formGroup]="reagentForm" (ngSubmit)="addReagent()">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" class="form-control" formControlName="nom">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="quantite">Quantité</label>
+          <input type="number" id="quantite" class="form-control" formControlName="quantite">
+        </div>
+
+        <div class="form-group">
+          <label for="dateDeExpiration">Date d'expiration</label>
+          <input type="date" id="dateDeExpiration" class="form-control" formControlName="dateDeExpiration">
+        </div>
+
+        <div class="form-group">
+          <label for="fournisseur">Fournisseur</label>
+          <input type="text" id="fournisseur" class="form-control" formControlName="fournisseur">
+        </div>
+
+        <div class="form-group">
+          <label for="analyseId">Analyse ID</label>
+          <input type="number" id="analyseId" class="form-control" formControlName="analyseId">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <form *ngIf="showUpdateForm && selectedReagent" [formGroup]="updateReagentForm" (ngSubmit)="updateReagent()">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" class="form-control" formControlName="nom">
+        </div>
+      
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" class="form-control" formControlName="description"></textarea>
+        </div>
+      
+        <div class="form-group">
+          <label for="quantite">Quantité</label>
+          <input type="number" id="quantite" class="form-control" formControlName="quantite">
+        </div>
+      
+        <div class="form-group">
+          <label for="dateDeExpiration">Date d'expiration</label>
+          <input type="date" id="dateDeExpiration" class="form-control" formControlName="dateDeExpiration">
+        </div>
+      
+        <div class="form-group">
+          <label for="fournisseur">Fournisseur</label>
+          <input type="text" id="fournisseur" class="form-control" formControlName="fournisseur">
+        </div>
+      
+        <div class="form-group">
+          <label for="analyseId">Analyse ID</label>
+          <input type="number" id="analyseId" class="form-control" formControlName="analyseId">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+      
+    </div>
+
+    <table *ngIf="!showForm" id="datatablesSimple" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Quantité</th>
+          <th>Date d'expiration</th>
+          <th>Fournisseur</th>
+          <th>Analyse ID</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reagent of reagents">
+          <td>{{ reagent.reactifId }}</td>
+          <td>{{ reagent.nom }}</td>
+          <td>{{ reagent.description }}</td>
+          <td>{{ reagent.quantite }}</td>
+          <td>{{ reagent.dateDeExpiration | date: 'shortDate' }}</td>
+          <td>{{ reagent.fournisseur }}</td>
+          <td>{{ reagent.analyseId }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="toggleForm(reagent)">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteReagent(reagent.reactifId)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

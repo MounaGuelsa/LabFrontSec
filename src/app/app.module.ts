@@ -9,7 +9,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { DashboardCounterComponent } from './dashboard-counter/dashboard-counter.component';
 import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ModalComponent } from './modal/modal.component';
+import { ReagentsComponent } from './reagents/reagents.component';
+import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
@@ -18,13 +23,21 @@ import {ReactiveFormsModule} from "@angular/forms";
     NavBarComponent,
     SidebarComponent,
     ListePatientsComponent,
-    DashboardCounterComponent
+    DashboardCounterComponent,
+    ModalComponent,
+    ReagentsComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
