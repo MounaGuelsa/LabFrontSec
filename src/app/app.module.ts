@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { ReagentsComponent } from './reagents/reagents.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NavBarComponent,
     SidebarComponent,
     ListePatientsComponent,
-    ModalComponent
+    ModalComponent,
+    ReagentsComponent
+
 
   ],
   imports: [
@@ -28,7 +31,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
 
   ],
   providers: [],
