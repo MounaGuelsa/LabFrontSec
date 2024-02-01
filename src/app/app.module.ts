@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ModalComponent } from './modal/modal.component';
 import { ReagentsComponent } from './reagents/reagents.component';
 import { CommonModule } from '@angular/common';
+import {PatientService} from "./liste-patients/patient.service";
 
 
 
@@ -22,10 +23,10 @@ import { CommonModule } from '@angular/common';
     UsersComponent,
     NavBarComponent,
     SidebarComponent,
-    ListePatientsComponent,
     DashboardCounterComponent,
     ModalComponent,
-    ReagentsComponent
+    ReagentsComponent,
+    ListePatientsComponent
 
 
   ],
@@ -33,13 +34,12 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
     CommonModule
 
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
