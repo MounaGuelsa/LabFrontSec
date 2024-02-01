@@ -5,6 +5,7 @@ import {DashboardCounterComponent} from "./dashboard-counter/dashboard-counter.c
 import {ReagentsComponent} from "./reagents/reagents.component";
 import {ListePatientsComponent} from "./liste-patients/liste-patients.component";
 import { SamplesComponent } from './samples/samples.component';
+import {AnalyseMesuresComponent} from "./analyse-mesures/analyse-mesures.component";
 
 const routes: Routes = [
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: '', component: DashboardCounterComponent },
   {path:'patients',component:ListePatientsComponent},
   { path: 'samples', component: SamplesComponent },
+  { path: 'analyseMesures', component: AnalyseMesuresComponent },
 
 ];
 
