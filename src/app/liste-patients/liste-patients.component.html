@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Patients Component HTML -->
 <div class="card mb-4">
     <div class="card-header">
@@ -107,3 +108,48 @@
     </div>
   </div>
   
+=======
+<div class="container">
+  <h2 class="text-center">List of Patients</h2>
+  <div>
+    <!-- <button type="button" class="btn btn-success float-end" (click)="toggleForm()">Add patient</button> -->
+  </div>
+
+  <!-- <app-modal *ngIf="showForm" (closeModalEvent)="closeModal()" (submitFormEvent)="addPatient()"></app-modal> -->
+
+  <div class="table-responsive">
+    <table class="table table-striped mx-auto">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Date of Birth</th>
+          <th>Phone</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.sexe }}</td>
+          <td>{{ patient.adresse }}</td>
+          <td>{{ patient.dateDeNaissance }}</td>
+          <td>{{ patient.telephone }}</td>
+          <td>
+            <button type="button" class="btn btn-warning">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+>>>>>>> 185ca58ddab0e1ec1d69547d504f44d443907c01

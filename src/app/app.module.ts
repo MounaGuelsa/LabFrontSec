@@ -8,8 +8,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
+import { ReagentsComponent } from './reagents/reagents.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { ModalComponent } from './modal/modal.component';
     SidebarComponent,
     ListePatientsComponent,
     ModalComponent
+
   ],
   imports: [
     BrowserModule,
