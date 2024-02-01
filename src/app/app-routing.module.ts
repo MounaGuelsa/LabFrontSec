@@ -6,6 +6,7 @@ import {ReagentsComponent} from "./reagents/reagents.component";
 import {ListePatientsComponent} from "./liste-patients/liste-patients.component";
 import { SamplesComponent } from './samples/samples.component';
 import {AnalyseMesuresComponent} from "./analyse-mesures/analyse-mesures.component";
+import {AnalyseComponent} from "./analyse/analyse.component";
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'patients',component:ListePatientsComponent},
   { path: 'samples', component: SamplesComponent },
   { path: 'analyseMesures', component: AnalyseMesuresComponent },
+  { path: 'analyse', component: AnalyseComponent }
 
 ];
 
