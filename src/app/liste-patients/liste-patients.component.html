@@ -85,6 +85,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let patient of patients">
+            <td>{{ patient.patientId }}</td>
             <td>{{ patient.nom }}</td>
             <td>{{ patient.sexe }}</td>
             <td>{{ patient.adresse }}</td>
