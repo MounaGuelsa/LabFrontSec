@@ -14,7 +14,7 @@ import { ReagentsComponent } from './reagents/reagents.component';
 import { CommonModule } from '@angular/common';
 import {PatientService} from "./liste-patients/patient.service";
 import {ListePatientsComponent} from "./liste-patients/liste-patients.component";
-
+import { SamplesComponent } from './samples/samples.component';
 
 
 @NgModule({
@@ -26,8 +26,8 @@ import {ListePatientsComponent} from "./liste-patients/liste-patients.component"
     DashboardCounterComponent,
     ModalComponent,
     ReagentsComponent,
-    ListePatientsComponent
-
+    ListePatientsComponent,
+    SamplesComponent
   ],
   imports: [
     BrowserModule,

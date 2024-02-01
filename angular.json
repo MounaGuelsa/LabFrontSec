@@ -25,10 +25,7 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
-<<<<<<< HEAD
 
-=======
->>>>>>> LABO-10-Reagent-Inventory
             ],
             "scripts": [
               "src/js/scripts.js",

@@ -2,7 +2,7 @@
   <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
       <div class="nav">
-        <div class="sb-sidenav-menu-heading">Core</div>
+
 
         <!-- For DashboardComponent -->
         <a class="nav-link" routerLink="/dashboard">  </a>
@@ -21,13 +21,18 @@
         </a>
 
         <a class="nav-link collapsed" routerLink="/reagents" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-          <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+          <div class="sb-nav-link-icon"><i class="fas fa-flask"></i></div>
           Reagents
         </a>
 
+        <a class="nav-link collapsed" routerLink="/samples" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon"><i class="fas fa-vial"></i></div>
+          Samples
+        </a>
+        <!-- For PatientsComponent -->
         <a class="nav-link collapsed" routerLink="/patients" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-          <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-          patients
+          <div class="sb-nav-link-icon"><i class="fas fa-user-injured"></i></div>
+          Patients
         </a>
 
       </div>
