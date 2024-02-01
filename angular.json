@@ -25,6 +25,7 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
             ],
             "scripts": [
               "src/js/scripts.js",
@@ -32,8 +33,9 @@
               "src/js/chart-bar-demo.js",
               "src/js/chart-pie-demo.js",
               "src/js/datatables-simple-demo.js",
-              "src/js/datatables-demo.js"
-              
+              "src/js/datatables-demo.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+
             ]
           },
           "configurations": {

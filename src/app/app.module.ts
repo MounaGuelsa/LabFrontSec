@@ -7,9 +7,12 @@ import { UsersComponent } from './users/users.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { ModalComponent } from './modal/modal.component';
+import { DashboardCounterComponent } from './dashboard-counter/dashboard-counter.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { SamplesComponent } from './samples/samples.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { ModalComponent } from './modal/modal.component';
     NavBarComponent,
     SidebarComponent,
     ListePatientsComponent,
-    ModalComponent
+    ModalComponent,
+    DashboardCounterComponent,
+    SamplesComponent
   ],
   imports: [
     BrowserModule,
