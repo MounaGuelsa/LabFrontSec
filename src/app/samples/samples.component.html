@@ -1,0 +1,78 @@
+<div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      List of Samples
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <button class="btn btn-primary" (click)="toggleForm()">
+          <i class="fas fa-plus"></i> Add Sample
+        </button>
+      </div>
+  
+      <div *ngIf="showForm || showUpdateForm">
+        <!-- Add Sample Form -->
+        <form *ngIf="showForm && !selectedSample" [formGroup]="sampleForm" (ngSubmit)="addSample()">
+          <!-- Add your form fields here based on your Sample model -->
+          <div class="form-group">
+            <label for="patientId">Patient ID</label>
+            <input type="text" id="patientId" class="form-control" formControlName="patientId">
+          </div>
+  
+          <div class="form-group">
+            <label for="datePrelevement">Date of Collection</label>
+            <input type="date" id="datePrelevement" class="form-control" formControlName="datePrelevement">
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+        <!-- Update Sample Form -->
+        <form *ngIf="showUpdateForm && selectedSample" [formGroup]="updateSampleForm" (ngSubmit)="updateSample()">
+          <!-- Update your form fields here based on your Sample model -->
+          <div class="form-group">
+            <label for="patientId">Patient ID</label>
+            <input type="text" id="patientId" class="form-control" formControlName="patientId">
+          </div>
+  
+          <div class="form-group">
+            <label for="datePrelevement">Date of Collection</label>
+            <input type="date" id="datePrelevement" class="form-control" formControlName="datePrelevement">
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+  
+      <!-- Sample Table -->
+      <table *ngIf="!showForm" id="datatablesSimple" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Patient ID</th>
+            <th>Collection Date</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sample of samples">
+            <td>{{ sample.echantillonId }}</td>
+            <td>{{ sample.patientId }}</td>
+            <td>{{ sample.datePrelevement}}</td>
+            <td>
+              <button class="btn btn-sm btn-info" (click)="toggleForm(sample)">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="deleteSample(sample.echantillonId)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -9,7 +9,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { DashboardCounterComponent } from './dashboard-counter/dashboard-counter.component';
 import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { SamplesComponent } from './samples/samples.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     NavBarComponent,
     SidebarComponent,
     ListePatientsComponent,
-    DashboardCounterComponent
+    DashboardCounterComponent,
+    SamplesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
