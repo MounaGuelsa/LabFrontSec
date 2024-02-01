@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ListePatientsComponent } from './liste-patients/liste-patients.component';
 import { DashboardCounterComponent } from './dashboard-counter/dashboard-counter.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -14,6 +13,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ReagentsComponent } from './reagents/reagents.component';
 import { CommonModule } from '@angular/common';
 import {PatientService} from "./liste-patients/patient.service";
+import {ListePatientsComponent} from "./liste-patients/liste-patients.component";
 
 
 
@@ -27,7 +27,6 @@ import {PatientService} from "./liste-patients/patient.service";
     ModalComponent,
     ReagentsComponent,
     ListePatientsComponent
-
 
   ],
   imports: [
