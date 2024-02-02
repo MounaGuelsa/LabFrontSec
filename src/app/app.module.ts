@@ -16,7 +16,6 @@ import {PatientService} from "./liste-patients/patient.service";
 import {ListePatientsComponent} from "./liste-patients/liste-patients.component";
 import { SamplesComponent } from './samples/samples.component';
 import { AnalyseComponent } from './analyse/analyse.component';
-import { SousAnalyseComponent } from './sous-analyse/sous-analyse.component';
 import { AnalyseMesuresComponent } from './analyse-mesures/analyse-mesures.component';
 
 
@@ -32,7 +31,6 @@ import { AnalyseMesuresComponent } from './analyse-mesures/analyse-mesures.compo
     ListePatientsComponent,
     SamplesComponent,
     AnalyseComponent,
-    SousAnalyseComponent,
     AnalyseMesuresComponent
   ],
   imports: [

@@ -1,1 +1,87 @@
-<p>analyse works!</p>
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-table me-1"></i>
+    List of Analyses
+  </div>
+  <div class="card-body">
+    <div class="mb-3">
+      <button class="btn btn-primary me-3">
+        <i class="fas fa-plus"></i> Add Analyse
+      </button>
+      <button *ngIf="!showAllAnalyses" class="btn btn-primary" (click)="showAll()">
+        Show all analyses
+      </button>
+    </div>
+
+
+
+    <div *ngIf="showAllAnalyses" class="card mb-4">
+      <table id="datatablesSimple" class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Comment</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let analyse of analyses">
+          <td>{{ analyse.analyseId }}</td>
+          <td>{{ analyse.utilisateurId }}</td>
+          <td>{{ analyse.dateDebutAnalyse.join('-') | date }}</td>
+          <td>{{ analyse.dateFinAnalyse.join('-') | date }}</td>
+          <td>{{ analyse.analyseType }}</td>
+          <td>{{ analyse.etatAnalyse }}</td>
+          <td>{{ analyse.commentaire }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="getAnalyseDetails(analyse.analyseId)">
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button class="btn btn-sm btn-info">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="!showAllAnalyses && selectedAnalyse" class="card mt-4 mx-auto" style="max-width: 600px;">
+  <div class="card-header">
+    <h2 class="text-center">Analysis Details</h2>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>ID:</strong> {{ selectedAnalyse.analyseId }}</li>
+      <li class="list-group-item"><strong>User ID:</strong> {{ selectedAnalyse.utilisateurId }}</li>
+      <li class="list-group-item"><strong>Start Date:</strong> {{ selectedAnalyse.dateDebutAnalyse.join('-') | date }}</li>
+      <li class="list-group-item"><strong>End Date:</strong> {{ selectedAnalyse.dateFinAnalyse.join('-') | date }}</li>
+      <li class="list-group-item"><strong>Type:</strong> {{ selectedAnalyse.analyseType }}</li>
+      <li class="list-group-item"><strong>Status:</strong> {{ selectedAnalyse.etatAnalyse }}</li>
+      <li class="list-group-item"><strong>Comment:</strong> {{ selectedAnalyse.commentaire }}</li>
+      <li class="list-group-item"><strong>Planification ID:</strong> {{ selectedAnalyse.planificationId }}</li>
+      <li class="list-group-item"><strong>Sample ID:</strong> {{ selectedAnalyse.echantillonId }}</li>
+      <li class="list-group-item"><strong>Reagents IDs:</strong> {{ selectedAnalyse.reactifsIds }}</li>
+    </ul>
+    <div *ngFor="let sousAnalyse of selectedAnalyse.sousAnalyses" class="mt-3">
+      <h3 class="text-center">Sub-analysis</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>ID:</strong> {{ sousAnalyse.sousAnalyseId }}</li>
+        <li class="list-group-item"><strong>Value:</strong> {{ sousAnalyse.valeur }}</li>
+        <li class="list-group-item"><strong>Measure ID:</strong> {{ sousAnalyse.sousAnalyseMesures.sousAnalyseMesuresId }}</li>
+        <li class="list-group-item"><strong>Analysis Name:</strong> {{ sousAnalyse.sousAnalyseMesures.analyseName }}</li>
+        <li class="list-group-item"><strong>Min:</strong> {{ sousAnalyse.sousAnalyseMesures.min }}</li>
+        <li class="list-group-item"><strong>Max:</strong> {{ sousAnalyse.sousAnalyseMesures.max }}</li>
+        <li class="list-group-item"><strong>Unit:</strong> {{ sousAnalyse.sousAnalyseMesures.unite }}</li>
+        <li class="list-group-item"><strong>Result Status:</strong> {{ sousAnalyse.statutDeResultat }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
