@@ -5,8 +5,8 @@
   </div>
   <div class="card-body">
     <div class="mb-3">
-      <button class="btn btn-primary me-3">
-        <i class="fas fa-plus"></i> Add Analyse
+      <button class="btn btn-sm btn-info" (click)="showAddForm = true">
+        <i class="fas fa-plus"></i>
       </button>
       <button *ngIf="!showAllAnalyses" class="btn btn-primary" (click)="showAll()">
         Show all analyses
@@ -39,10 +39,10 @@
           <td>{{ analyse.etatAnalyse }}</td>
           <td>{{ analyse.commentaire }}</td>
           <td>
-            <button class="btn btn-sm btn-info" (click)="getAnalyseDetails(analyse.analyseId)">
+            <button class="btn btn-sm btn-info mr-2" (click)="getAnalyseDetails(analyse.analyseId)">
               <i class="fas fa-info-circle"></i>
             </button>
-            <button class="btn btn-sm btn-info">
+            <button class="btn btn-sm btn-info" (click)="modifyAnalyse(analyse)">
               <i class="fas fa-pencil-alt"></i>
             </button>
 
@@ -83,5 +83,77 @@
         <li class="list-group-item"><strong>Result Status:</strong> {{ sousAnalyse.statutDeResultat }}</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<div *ngIf="showUpdateForm && selectedAnalyse" class="card mt-4 mx-auto" style="max-width: 600px;">
+  <div class="card-header">
+    <h2 class="text-center">Update Analysis</h2>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="updateAnalyse()">
+      <div class="mb-3">
+        <label for="utilisateurId" class="form-label">User ID</label>
+        <input type="number" class="form-control" id="utilisateurId" [(ngModel)]="selectedAnalyse.utilisateurId" name="utilisateurId">
+      </div>
+      <div class="mb-3">
+        <label for="analyseType" class="form-label">Type</label>
+        <input type="text" class="form-control" id="analyseType" [(ngModel)]="selectedAnalyse.analyseType" name="analyseType">
+      </div>
+      <div class="mb-3">
+        <label for="etatAnalyse" class="form-label">Status</label>
+        <input type="text" class="form-control" id="etatAnalyse" [(ngModel)]="selectedAnalyse.etatAnalyse" name="etatAnalyse">
+      </div>
+      <div class="mb-3">
+        <label for="commentaire" class="form-label">Comment</label>
+        <input type="text" class="form-control" id="commentaire" [(ngModel)]="selectedAnalyse.commentaire" name="commentaire">
+      </div>
+      <div class="mb-3">
+        <label for="planificationId" class="form-label">Planification ID</label>
+        <input type="number" class="form-control" id="planificationId" [(ngModel)]="selectedAnalyse.planificationId" name="planificationId">
+      </div>
+      <div class="mb-3">
+        <label for="echantillonId" class="form-label">Sample ID</label>
+        <input type="number" class="form-control" id="echantillonId" [(ngModel)]="selectedAnalyse.echantillonId" name="echantillonId">
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="showAddForm" class="card mt-4 mx-auto" style="max-width: 600px;">
+  <div class="card-header">
+    <h2 class="text-center">Add Analysis</h2>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="addAnalyse()">
+      <div class="mb-3">
+        <label for="reactifsIds" class="form-label">Reactifs Ids</label>
+        <input type="text" class="form-control" id="reactifsIds" [(ngModel)]="newAnalyse.reactifsIds" name="reactifsIds">
+
+        <label for="echantillonId" class="form-label">Echantillon Id</label>
+        <input type="number" class="form-control" id="echantillonId" [(ngModel)]="newAnalyse.echantillonId" name="echantillonId">
+
+        <label for="planificationId" class="form-label">Planification Id</label>
+        <input type="number" class="form-control" id="planificationId" [(ngModel)]="newAnalyse.planificationId" name="planificationId">
+
+        <label for="dateFinAnalyse" class="form-label">Date Fin Analyse</label>
+        <input type="date" class="form-control" id="dateFinAnalyse" [(ngModel)]="newAnalyse.dateFinAnalyse" name="dateFinAnalyse">
+
+        <label for="utilisateurId" class="form-label">Utilisateur Id</label>
+        <input type="number" class="form-control" id="utilisateurId" [(ngModel)]="newAnalyse.utilisateurId" name="utilisateurId">
+
+        <label for="commentaire" class="form-label">Commentaire</label>
+        <input type="text" class="form-control" id="commentaire" [(ngModel)]="newAnalyse.commentaire" name="commentaire">
+
+        <div *ngFor="let sousAnalyse of newAnalyse.sousAnalyses; let i = index">
+          <label for="valeur{{i}}" class="form-label">Valeur</label>
+          <input type="number" class="form-control" id="valeur{{i}}" [(ngModel)]="sousAnalyse.valeur" name="valeur{{i}}">
+
+          <label for="sousAnalyseMesuresId{{i}}" class="form-label">Sous Analyse Mesures Id</label>
+          <input type="number" class="form-control" id="sousAnalyseMesuresId{{i}}" [(ngModel)]="sousAnalyse.sousAnalyseMesuresId" name="sousAnalyseMesuresId{{i}}">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
   </div>
 </div>

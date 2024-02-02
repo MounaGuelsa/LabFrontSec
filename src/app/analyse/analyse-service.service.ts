@@ -19,7 +19,7 @@ export class AnalyseService {
     return this.http.get<Analyse>(`${this.apiUrl}/${id}`);
   }
 
-  addAnalyse(analyse: Analyse): Observable<Analyse> {
+  addAnalyse(analyse: {} | undefined): Observable<Analyse> {
     return this.http.post<Analyse>(this.apiUrl, analyse);
   }
 
