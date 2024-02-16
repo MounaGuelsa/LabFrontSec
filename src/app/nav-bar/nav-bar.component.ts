@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent {
 
-  // constructor() { }
-  //
-  // ngOnInit(): void {
-  // }
+  constructor(private authService: AuthService) { }
+  
+  ngOnInit(): void {
+  }
 
 }

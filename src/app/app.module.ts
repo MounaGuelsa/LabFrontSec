@@ -17,6 +17,7 @@ import {ListePatientsComponent} from "./liste-patients/liste-patients.component"
 import { SamplesComponent } from './samples/samples.component';
 import { AnalyseComponent } from './analyse/analyse.component';
 import { AnalyseMesuresComponent } from './analyse-mesures/analyse-mesures.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AnalyseMesuresComponent } from './analyse-mesures/analyse-mesures.compo
     ListePatientsComponent,
     SamplesComponent,
     AnalyseComponent,
-    AnalyseMesuresComponent
+    AnalyseMesuresComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
